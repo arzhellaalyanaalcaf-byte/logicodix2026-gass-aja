@@ -7,7 +7,7 @@ import { initChat } from './components/chatbot.js';
 import { get, set, reset, subscribe, stats } from './store.js';
 import { $, modal, observeReveal, toast, esc } from './ui.js';
 import { openBadges } from './pages/hasil.js';
-import { fetchCuaca, risk, todayYmd, resolveLokasi } from './weather.js';
+import { fetchCuaca, risk, next24, perluPilihLokasi, todayYmd, resolveLokasi } from './weather.js';
 
 import * as landing from './pages/landing.js';
 import * as beranda from './pages/beranda.js';
@@ -28,30 +28,45 @@ const ROUTES = {
   simulasi: { page: simulasi, title: 'Simulasi', nav: 'simulasi' },
   hasil: { page: hasil, title: 'Hasil & Pencapaian', nav: 'kuis' },
   aksi: { page: aksi, title: 'Aksi Nyata', nav: 'aksi' },
-  cuaca: { page: cuaca, title: 'Cuaca BMKG', nav: 'cuaca' },
+  cuaca: { page: cuaca, title: 'Pantau Cuaca', nav: 'cuaca' },
 };
 
 const NAV = [
   ['beranda', 'Beranda'], ['edukasi', 'Edukasi'], ['starter-pack', 'Starter Pack'], ['kuis', 'Kuis'],
-  ['simulasi', 'Simulasi'], ['cuaca', 'Cuaca'], ['aksi', 'Aksi Nyata'],
+  ['simulasi', 'Simulasi'], ['cuaca', 'Pantau Cuaca'], ['aksi', 'Aksi Nyata'],
 ];
+// Menu khusus halaman depan: menggulir ke bagian halaman, bukan pindah halaman
+const NAV_LANDING = [['top', 'Beranda'], ['fitur', 'Fitur'], ['pantau-cuaca', 'Pantau Cuaca'], ['tentang', 'Tentang Kami']];
 
-function navHtml() {
+let navMode = null;
+function navHtml(mode) {
+  const links = mode === 'landing'
+    ? NAV_LANDING.map(([k, l]) => `<a href="#/" data-scroll="${k}" data-label="${l}" class="${k === 'top' ? 'active' : ''}">${l}</a>`).join('')
+    : NAV.map(([k, l]) => `<a href="#/${k}" data-nav="${k}" data-label="${l}">${l}</a>`).join('');
   return `
   <div class="container">
-    <a class="brand" href="#/">${logo()}<span>Banjir<b>Euy</b></span></a>
-    <nav class="nav-links" id="navLinks" aria-label="Navigasi utama">
-      ${NAV.map(([k, l]) => `<a href="#/${k}" data-nav="${k}" data-label="${l}">${l}</a>`).join('')}
-    </nav>
+    <a class="brand" href="#/" data-home>${logo()}<span>Banjir<b>Euy</b></span></a>
+    <nav class="nav-links" id="navLinks" aria-label="Navigasi utama">${links}</nav>
     <div class="nav-actions" id="navActions"></div>
     <button class="icon-btn burger" id="burger" aria-label="Buka menu">${icon('menu')}</button>
   </div>`;
 }
 
+function renderNav(mode) {
+  navMode = mode;
+  const nav = $('#nav');
+  nav.classList.toggle('nav-landing', mode === 'landing');
+  nav.innerHTML = navHtml(mode);
+  $('#burger').addEventListener('click', () => $('#navLinks').classList.toggle('open'));
+  bindActions();
+}
+
 function actionsHtml() {
   const s = get();
-  if (!s.nama) return `<button class="btn btn-primary btn-sm" id="loginBtn">Masuk</button>`;
-  return `
+  if (navMode === 'landing') return '';
+  const home = `<a class="icon-btn home-btn" href="#/" aria-label="Kembali ke halaman utama" data-tip="Halaman Utama">${icon('home')}</a>`;
+  if (!s.nama) return `${home}<button class="btn btn-primary btn-sm" id="loginBtn">Masuk</button>`;
+  return `${home}
     <div class="rel"><button class="icon-btn" id="bellBtn" aria-label="Notifikasi">${icon('bell')}${s.notifRead ? '' : '<span class="dot"></span>'}</button>
       <div class="dropdown" id="bellDd"><h4>Notifikasi</h4><div id="notifList"><div class="dd-item">Memuat info cuaca…</div></div></div></div>
     <div class="rel"><button class="avatar" id="avaBtn" aria-label="Menu akun" title="${esc(s.nama)}">${esc(s.nama.trim()[0]?.toUpperCase() || 'S')}</button>
@@ -66,7 +81,7 @@ function actionsHtml() {
 function askName(after) {
   modal(`<h2>Kenalan dulu, yuk!</h2>
     <p class="muted" style="margin-top:6px">Nama panggilanmu dipakai untuk menyapa dan tercetak di checklist PDF. Disimpan hanya di perangkat ini.</p>
-    <form id="nameForm"><div class="field"><label for="nm">Nama panggilan</label><input id="nm" maxlength="30" placeholder="contoh: Rafi" value="${esc(get().nama)}" autocomplete="nickname" required></div>
+    <form id="nameForm"><div class="field"><label for="nm">Nama panggilan</label><input id="nm" maxlength="30" placeholder="misalnya Rafi" value="${esc(get().nama)}" autocomplete="nickname" required></div>
     <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:18px"><button type="button" class="btn btn-ghost" id="skip">Lewati</button><button class="btn btn-primary" type="submit">Lanjut ${icon('arrow', 'arrow')}</button></div></form>`, {
     onMount(m, close) {
       m.querySelector('#nm').focus();
@@ -80,12 +95,14 @@ async function loadNotif() {
   const list = $('#notifList'); if (!list) return;
   const items = [];
   try {
-    const data = await fetchCuaca(await resolveLokasi());
+    const adm = await resolveLokasi();
+    if (perluPilihLokasi()) throw new Error('pilih');
+    const data = await fetchCuaca(adm);
     const t = todayYmd(data); const d0 = data.daily.find((d) => d.date === t) || data.daily[0];
-    const r = risk(d0, data.hourly.filter((h) => h.date === d0.date));
-    items.push(`<a class="dd-item" href="#/cuaca">${icon('cloudRain')}<span><strong>Cuaca hari ini: ${r.label}</strong>${esc(data.lokasi.desa)} · ${esc(d0.dominant.desc)}, ±${d0.rainTotal} mm</span></a>`);
+    const r = risk(d0, next24(data));
+    items.push(`<a class="dd-item" href="#/cuaca">${icon('cloudRain')}<span><strong>Status cuaca hari ini ${r.label}</strong>${esc(data.lokasi.desa)} · ${esc(d0.dominant.desc)}, ±${d0.rainTotal} mm</span></a>`);
     const tmr = data.daily.find((d) => d.date > t);
-    if (tmr) items.push(`<a class="dd-item" href="#/cuaca">${icon('calendar')}<span><strong>Besok: ${esc(tmr.dominant.desc)}</strong>Suhu ${tmr.tMin}–${tmr.tMax}°C · ${tmr.kategori.label}</span></a>`);
+    if (tmr) items.push(`<a class="dd-item" href="#/cuaca">${icon('calendar')}<span><strong>Besok diprakirakan ${esc(tmr.dominant.desc).toLowerCase()}</strong>Suhu ${tmr.tMin}–${tmr.tMax}°C · ${tmr.kategori.label}</span></a>`);
   } catch { items.push(`<div class="dd-item">${icon('info')}<span>Info cuaca belum tersedia.</span></div>`); }
   const st = stats();
   if (st.materi < st.materiTotal) items.push(`<a class="dd-item" href="#/edukasi">${icon('book')}<span><strong>Lanjutkan materi</strong>${st.materi}/${st.materiTotal} materi selesai</span></a>`);
@@ -115,11 +132,29 @@ function bindActions() {
 }
 
 
+let spy = null;
+function scrollSpy(root) {
+  spy?.disconnect(); spy = null;
+  if (navMode !== 'landing') return;
+  const setActive = (id) => document.querySelectorAll('[data-scroll]').forEach((a) => a.classList.toggle('active', a.dataset.scroll === id));
+  spy = new IntersectionObserver((entries) => {
+    entries.forEach((en) => { if (en.isIntersecting) setActive(en.target.dataset.section); });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  root.querySelectorAll('[data-section]').forEach((s) => spy.observe(s));
+}
+
+function scrollToSection(id) {
+  $('#navLinks')?.classList.remove('open');
+  if (id === 'top') { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 function route() {
   const raw = location.hash.replace(/^#\/?/, '');
   const [key, ...params] = raw.split('/');
   const r = ROUTES[key] ?? ROUTES[''];
-  // tanpa nama: arahkan ke sapaan dulu, tapi tetap tampilkan halaman
+  const mode = r.page === landing ? 'landing' : 'app';
+  if (mode !== navMode) renderNav(mode);
   document.title = `${r.title} · BanjirEuy`;
   document.querySelectorAll('[data-nav]').forEach((a) => a.classList.toggle('active', a.dataset.nav === r.nav));
   $('#navLinks').classList.remove('open');
@@ -130,18 +165,20 @@ function route() {
   window.scrollTo({ top: 0 });
   view.mount?.(app.firstElementChild);
   observeReveal(app);
+  scrollSpy(app);
 }
 
 function init() {
-  $('#nav').innerHTML = navHtml();
-  bindActions();
-  $('#burger').addEventListener('click', () => $('#navLinks').classList.toggle('open'));
   document.addEventListener('click', (e) => {
+    const sc = e.target.closest('[data-scroll]');
+    if (sc) { e.preventDefault(); scrollToSection(sc.dataset.scroll); return; }
+    if (e.target.closest('[data-home]') && navMode === 'landing') { e.preventDefault(); scrollToSection('top'); return; }
     if (!e.target.closest('.rel')) document.querySelectorAll('.dropdown.open').forEach((d) => d.classList.remove('open'));
     const start = e.target.closest('[data-start]');
     if (start && !get().nama) { e.preventDefault(); askName(() => { location.hash = '#/beranda'; }); }
   });
-  subscribe(() => { /* jaga avatar tetap sinkron */ const ava = $('#avaBtn'); if (!ava && get().nama) bindActions(); });
+  let lastNama = get().nama;
+  subscribe((st) => { if (st.nama !== lastNama) { lastNama = st.nama; bindActions(); } });
   window.addEventListener('hashchange', route);
   initChat();
   route();

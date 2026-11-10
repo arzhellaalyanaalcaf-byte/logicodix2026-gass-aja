@@ -1,7 +1,7 @@
-# Kredensial — wajib tidak ikut ter-push (ketentuan Logicodix 2026)
+# Kredensial — wajib tidak ikut ter-push
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
 
 node_modules/
 .vercel/

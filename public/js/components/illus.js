@@ -209,8 +209,38 @@ export function topicArt(key) {
 }
 
 /* ---------- Adegan simulasi (parametrik) ---------- */
+/* rumah dua lantai untuk adegan simulasi di rumah */
+function rumahScene(night) {
+  const win = night ? '#fde68a' : '#cfe1fb';
+  const small = (x, y, roof, wall) => `<g transform="translate(${x} ${y})"><path d="M-10 40 L55 0 L120 40Z" fill="${roof}"/><rect x="0" y="40" width="110" height="80" fill="${wall}"/><rect x="18" y="58" width="26" height="22" rx="2" fill="${win}"/><rect x="66" y="66" width="26" height="54" rx="2" fill="#8a5a3c"/></g>`;
+  return `${small(-30, 186, '#b45309', '#f3e3c8')}${small(492, 192, '#2563eb', '#e8eef9')}
+  <g transform="translate(176 92)">
+    <path d="M-22 74 L124 0 L270 74Z" fill="#c2410c"/><path d="M-22 74 L124 0 L124 14 L-4 74Z" fill="#9a3412" opacity=".35"/>
+    <rect x="0" y="74" width="248" height="166" fill="#fdf2e3"/><rect x="0" y="150" width="248" height="8" fill="#e8d5b9"/>
+    ${[22, 104, 186].map((x) => `<rect x="${x}" y="92" width="42" height="40" rx="3" fill="${win}" stroke="#d6c3a5" stroke-width="3"/><path d="M${x + 21} 92 V132" stroke="#d6c3a5" stroke-width="2"/>`).join('')}
+    <rect x="22" y="172" width="42" height="38" rx="3" fill="${win}" stroke="#d6c3a5" stroke-width="3"/><rect x="186" y="172" width="42" height="38" rx="3" fill="${win}" stroke="#d6c3a5" stroke-width="3"/>
+    <rect x="100" y="168" width="48" height="72" rx="3" fill="#7c4a2d"/><circle cx="140" cy="206" r="3" fill="#fbbf24"/>
+    <rect x="-6" y="236" width="260" height="8" fill="#cbb89a"/>
+  </g>`;
+}
+
+/* deretan ruko dan lampu jalan untuk adegan di jalan */
+function jalanScene(night) {
+  const win = night ? '#fde68a' : '#d6e6fb';
+  const ruko = [[0, 120, 150, '#f1d9c0', '#ef4444'], [150, 96, 150, '#dbe6f5', '#2563eb'], [300, 132, 140, '#f6e7c1', '#16a34a'], [440, 108, 170, '#e9dcf3', '#f59e0b']];
+  return `${ruko.map(([x, y, w, wall, aw]) => `<g><rect x="${x}" y="${y}" width="${w}" height="${300 - y}" fill="${wall}" stroke="#c9d3e3" stroke-width="2"/>
+    ${[0, 1, 2].map((c) => `<rect x="${x + 16 + c * (w - 32) / 3}" y="${y + 18}" width="${(w - 32) / 3 - 10}" height="26" rx="2" fill="${win}"/>`).join('')}
+    <path d="M${x + 6} ${y + 70} h${w - 12} l-10 18 h-${w - 32}z" fill="${aw}"/>
+    ${Array.from({ length: Math.floor((w - 12) / 22) }, (_, i) => `<rect x="${x + 10 + i * 22}" y="${y + 70}" width="11" height="18" fill="#fff" opacity=".35"/>`).join('')}
+    <rect x="${x + 14}" y="${y + 96}" width="${w - 28}" height="${204 - 96}" fill="#94a3b8" opacity=".35"/>
+    ${Array.from({ length: 6 }, (_, i) => `<path d="M${x + 14} ${y + 104 + i * 14} h${w - 28}" stroke="#7b8aa1" stroke-width="2" opacity=".45"/>`).join('')}
+  </g>`).join('')}
+  <rect x="0" y="292" width="600" height="88" fill="#6b7280"/><path d="M0 334 H600" stroke="#f8fafc" stroke-width="5" stroke-dasharray="34 26"/>
+  <g><rect x="96" y="150" width="7" height="150" fill="#475569"/><path d="M99 152 q22 -14 40 0" stroke="#475569" stroke-width="5" fill="none"/><ellipse cx="140" cy="156" rx="10" ry="5" fill="${night ? '#fde047' : '#e2e8f0'}"/></g>`;
+}
+
 export function simScene(o = {}) {
-  const { water = .3, lightning = false, sun = false, pole = false, gate = false, car = false, night = false, mud = false } = o;
+  const { water = .3, lightning = false, sun = false, pole = false, gate = false, car = false, night = false, mud = false, place = 'sekolah' } = o;
   const sky = id('ss');
   const wy = 290 - water * 170;
   const skyTop = sun ? '#9cc3f2' : night ? '#33456e' : '#7f93b5';
@@ -227,7 +257,7 @@ export function simScene(o = {}) {
     ${lightning ? `<path class="bolt" d="M300 60 l-22 52 h20 l-16 46 l40 -62 h-22 l18 -36z" fill="#fde047" stroke="#facc15" stroke-width="2"/>` : ''}
     <path d="M0 240 C120 214 260 226 380 212 S540 208 600 220 V380 H0Z" fill="${sun ? '#cfe2f6' : '#a6b9d4'}"/>
     ${tree(60, 254, 1, '#4fae6c', '#3a9258', 0)}${tree(560, 252, 1.05, '#4fae6c', '#3a9258', .4)}
-    ${school(110, 126, 1.08, { lit: night })}
+    ${place === 'rumah' ? rumahScene(night) : place === 'jalan' ? jalanScene(night) : school(110, 126, 1.08, { lit: night })}
     ${gate ? `<g><rect x="70" y="250" width="12" height="90" fill="#6b7a90"/><rect x="510" y="250" width="12" height="90" fill="#6b7a90"/><path d="M82 262 H510" stroke="#6b7a90" stroke-width="6"/>${Array.from({ length: 18 }, (_, i) => `<rect x="${92 + i * 23}" y="262" width="4" height="70" fill="#8796ab"/>`).join('')}</g>` : ''}
     ${pole ? `<g><rect x="470" y="150" width="8" height="190" fill="#7a8699"/><rect x="452" y="160" width="44" height="6" fill="#7a8699"/><path d="M456 166 C430 230 420 260 400 ${wy - 4}" stroke="#1f2937" stroke-width="3" fill="none"/><g class="spark"><path d="M394 ${wy - 10} l8 6 -10 2 8 8" stroke="#facc15" stroke-width="3" fill="none"/><circle cx="400" cy="${wy - 4}" r="6" fill="#fde047" opacity=".8"/></g></g>` : ''}
     ${car ? `<g transform="translate(360 ${wy - 32})"><rect x="0" y="10" width="120" height="34" rx="10" fill="#e11d48"/><path d="M18 10 l14 -20 h50 l16 20z" fill="#be123c"/><rect x="36" y="-6" width="20" height="14" fill="#bfdbfe"/><rect x="62" y="-6" width="20" height="14" fill="#bfdbfe"/></g>` : ''}
@@ -367,8 +397,78 @@ export function aksiBg() {
   return `<svg viewBox="0 0 500 470" preserveAspectRatio="xMaxYMax slice" aria-hidden="true">
     <g class="cloud-drift" opacity=".9">${cloud(60, 30, .9, '#ffffff', '#e3ecf9')}${cloud(300, 10, .7, '#ffffff', '#e3ecf9')}</g>
     <path d="M0 360 C120 330 260 340 380 326 S480 320 500 330 V470 H0Z" fill="#d3e4f8"/>
-    ${school(40, 200, .9)}
+    ${school(150, 196, .62)}
+    ${[[-6, 262, .95, '#dc5442', '#fbefdc'], [96, 286, .8, '#2563eb', '#eef3fb'], [372, 270, .9, '#16a34a', '#fff6e6']].map(([x, y, k, roof, wall]) => `<g transform="translate(${x} ${y}) scale(${k})"><path d="M-8 44 L58 0 L124 44Z" fill="${roof}"/><rect x="0" y="44" width="116" height="78" fill="${wall}" stroke="#d9c9ae" stroke-width="2"/><rect x="16" y="62" width="28" height="24" rx="3" fill="#cfe1fb" stroke="#d9c9ae" stroke-width="2"/><rect x="70" y="70" width="28" height="52" rx="3" fill="#8a5a3c"/></g>`).join('')}
     ${tree(30, 360, 1, '#62bd7e', '#4aa266', 0)}${tree(470, 350, 1.2, '#62bd7e', '#4aa266', .5)}
     <rect x="0" y="420" width="500" height="50" fill="#c6dbf3"/>
+  </svg>`;
+}
+
+/* ---------- Ilustrasi tiap jenis banjir ---------- */
+function rainLines(n, x0, x1, y0, y1, col = '#93b4e6') {
+  return Array.from({ length: n }, (_, i) => {
+    const x = x0 + ((x1 - x0) * (i + 0.5)) / n + ((i * 37) % 11) - 5; const y = y0 + ((i * 53) % (y1 - y0));
+    return `<line class="svg-drop" style="animation-delay:${((i * 0.13) % 1.1).toFixed(2)}s" x1="${x}" y1="${y}" x2="${x - 3}" y2="${y + 11}" stroke="${col}" stroke-width="2" stroke-linecap="round"/>`;
+  }).join('');
+}
+
+export function floodTypeArt(key) {
+  const sky = id('fs');
+  const skyDef = (a, b) => `<defs><linearGradient id="${sky}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs><rect width="320" height="200" fill="url(#${sky})"/>`;
+  if (key === 'genangan') {
+    return `<svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${skyDef('#9fb6d8', '#dce7f6')}
+      <g class="cloud-drift">${cloud(10, 4, .8, '#7f97bf', '#6c85b0')}${cloud(170, -4, .9, '#8aa1c6', '#768fb7')}</g>
+      <rect x="18" y="62" width="58" height="110" fill="#c3cfe0"/><rect x="84" y="40" width="64" height="132" fill="#aebfd6"/><rect x="214" y="54" width="54" height="118" fill="#b9c8dc"/><rect x="274" y="76" width="44" height="96" fill="#c9d4e4"/>
+      ${[0, 1, 2, 3].map((r) => [0, 1, 2].map((c) => `<rect x="${92 + c * 18}" y="${52 + r * 22}" width="10" height="12" rx="1" fill="#ffe9a8" opacity="${(r + c) % 2 ? .9 : .5}"/>`).join('')).join('')}
+      ${[0, 1, 2].map((r) => [0, 1].map((c) => `<rect x="${26 + c * 24}" y="${74 + r * 26}" width="12" height="14" rx="1" fill="#eef3fb"/>`).join('')).join('')}
+      <rect x="180" y="96" width="4" height="76" fill="#5b6b82"/><path d="M182 96 q14 -6 22 4" stroke="#5b6b82" stroke-width="4" fill="none"/><circle cx="204" cy="102" r="5" fill="#fde68a"/>
+      <rect x="0" y="168" width="320" height="32" fill="#7d8aa0"/>
+      <g transform="translate(118 140)"><path d="M0 22 h70 l-6 -16 h-12 l-8 -12 h-24 l-10 12 h-6z" fill="#e11d48"/><rect x="20" y="0" width="12" height="9" fill="#bfdbfe"/><rect x="36" y="0" width="12" height="9" fill="#bfdbfe"/><circle cx="14" cy="24" r="7" fill="#1f2937"/><circle cx="56" cy="24" r="7" fill="#1f2937"/></g>
+      ${waterBand(156, 60, '#8bb4e9', '#4f84ce', 'wave-move', 4, .88)}
+      ${ripples([[60, 176, 0], [250, 182, .9]])}
+      ${rainLines(16, 0, 320, 10, 150)}
+    </svg>`;
+  }
+  if (key === 'luapan') {
+    return `<svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${skyDef('#8fa9d1', '#dfe9f7')}
+      <g class="cloud-drift">${cloud(150, 0, 1, '#7189b0', '#5f779f')}</g>
+      <path d="M0 96 C60 70 120 82 170 74 S270 60 320 72 V200 H0Z" fill="#9fc79f"/>
+      <path d="M0 110 C70 92 140 104 200 96 S290 86 320 92 V200 H0Z" fill="#7fb684"/>
+      ${tree(40, 104, .55, '#5aa96f', '#3f8f57', 0)}${tree(286, 98, .6, '#5aa96f', '#3f8f57', .4)}
+      <g transform="translate(218 104)"><path d="M-6 26 L22 4 L50 26Z" fill="#dc5442"/><rect x="0" y="26" width="44" height="30" fill="#fbefdc"/><rect x="18" y="38" width="10" height="18" fill="#7b5236"/></g>
+      <g transform="translate(70 116)"><path d="M-6 22 L18 2 L42 22Z" fill="#e45f4b"/><rect x="0" y="22" width="36" height="26" fill="#fff6ea"/></g>
+      <path d="M0 150 C80 136 160 160 240 146 S300 140 320 146" stroke="#6b8f5e" stroke-width="6" fill="none" opacity=".5"/>
+      ${waterBand(138, 70, '#7fa9e2', '#3f74c2', 'wave-move', 6, .92)}
+      ${waterBand(150, 60, '#6c9bdc', '#3568b4', 'wave-move rev', 7, .85)}
+      ${ripples([[110, 166, 0], [190, 178, .7], [280, 170, 1.4]])}
+      ${rainLines(10, 150, 300, 40, 120)}
+    </svg>`;
+  }
+  if (key === 'bandang') {
+    return `<svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${skyDef('#8a9cbc', '#d8e2f0')}
+      <g class="cloud-drift">${cloud(-10, -6, 1, '#6d7f9f', '#5b6c8c')}${cloud(150, -10, .9, '#7a8bac', '#677898')}</g>
+      <path d="M0 60 L90 40 L170 92 L320 150 V200 H0Z" fill="#7a9a6c"/>
+      <path d="M0 80 L70 64 L150 108 L320 166 V200 H0Z" fill="#5f8455"/>
+      ${tree(30, 74, .5, '#4f8f5d', '#3a7449', 0)}${tree(62, 70, .42, '#4f8f5d', '#3a7449', .3)}${tree(118, 98, .45, '#4f8f5d', '#3a7449', .6)}
+      <path d="M40 66 C90 84 120 100 160 118 S250 150 320 172 V200 H200 C170 186 120 160 80 130 S50 90 40 66Z" fill="#a0764a"/>
+      <path class="mud-flow" d="M48 72 C95 92 125 108 165 126 S250 156 320 178" stroke="#c99a68" stroke-width="5" fill="none" stroke-dasharray="14 12" opacity=".9"/>
+      <path class="mud-flow" d="M60 90 C105 112 135 128 175 144 S255 170 320 190" stroke="#c99a68" stroke-width="4" fill="none" stroke-dasharray="10 14" opacity=".8"/>
+      <g class="tumble" style="transform-origin:150px 128px"><rect x="132" y="122" width="40" height="7" rx="3" fill="#6b4226" transform="rotate(18 152 125)"/></g>
+      <ellipse class="tumble2" cx="210" cy="152" rx="10" ry="7" fill="#8a8f98"/><ellipse cx="248" cy="170" rx="8" ry="6" fill="#7c818a"/>
+      <g transform="translate(262 120)"><path d="M-6 20 L18 0 L42 20Z" fill="#dc5442" transform="rotate(-6 18 10)"/><rect x="0" y="20" width="36" height="22" fill="#fbefdc" transform="rotate(-6 18 31)"/></g>
+      ${rainLines(14, 0, 320, 20, 120, '#a9bbd6')}
+    </svg>`;
+  }
+  // rob
+  return `<svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${skyDef('#f6c7a1', '#fde9d7')}
+    <circle cx="258" cy="46" r="22" fill="#fff3d6"/><circle cx="268" cy="40" r="20" fill="#f9d2b0"/>
+    ${cloud(20, 18, .6, '#fbe3cf', '#f3d1b5')}
+    <path d="M0 108 H320 V200 H0Z" fill="#4f8fcf"/>
+    ${waterBand(100, 30, '#5fa0dc', '#3f7fc2', 'wave-move', 5, 1)}
+    <path d="M150 128 L320 128 V200 H120Z" fill="#e8d3a8"/>
+    ${[0, 1, 2].map((i) => `<g transform="translate(${170 + i * 48} ${102 - (i % 2) * 6})"><rect x="4" y="30" width="3" height="20" fill="#8a5a3c"/><rect x="32" y="30" width="3" height="20" fill="#8a5a3c"/><path d="M-4 18 L20 0 L44 18Z" fill="${['#dc5442', '#2563eb', '#16a34a'][i]}"/><rect x="0" y="18" width="40" height="14" fill="#fbefdc"/><rect x="16" y="22" width="8" height="10" fill="#7b5236"/></g>`).join('')}
+    <g class="bob-slow"><path d="M40 122 h60 l-10 14 h-42z" fill="#b45309"/><rect x="68" y="96" width="3" height="26" fill="#6b4226"/><path d="M71 98 l18 18 h-18z" fill="#fff"/></g>
+    ${waterBand(140, 70, '#7fb0e6', '#3f7fc2', 'wave-move rev', 6, .85)}
+    ${ripples([[200, 160, 0], [270, 170, .8]])}
   </svg>`;
 }

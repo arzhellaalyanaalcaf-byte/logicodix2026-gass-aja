@@ -2,7 +2,7 @@ import { icon } from '../components/icons.js';
 import { homeSchool, featureIcon, wxIcon, badgeArt } from '../components/illus.js';
 import { get, stats } from '../store.js';
 import { LENCANA } from '../data/content.js';
-import { fetchCuaca, isNight, risk, todayYmd, zonaLabel, resolveLokasi } from '../weather.js';
+import { fetchCuaca, isNight, risk, next24, perluPilihLokasi, todayYmd, zonaLabel, resolveLokasi } from '../weather.js';
 import { esc } from '../ui.js';
 import { openChat } from '../components/chatbot.js';
 
@@ -57,21 +57,25 @@ export function render() {
       el.querySelector('#askAi').addEventListener('click', () => openChat());
       const box = el.querySelector('#infoToday');
       try {
-        const data = await fetchCuaca(await resolveLokasi());
-        const auto = get().lokasiMode === 'auto' && get().geo?.adm4 === data.lokasi.adm4;
+        const adm = await resolveLokasi();
+        if (perluPilihLokasi()) {
+          box.innerHTML = `<div style="display:flex;gap:14px;align-items:center">${icon('mapPin')}<div><b style="color:var(--navy-800)">Pilih lokasimu dulu</b><p class="muted" style="font-size:14px">Buka <a href="#/cuaca">Pantau Cuaca</a> lalu pilih kelurahan atau desamu, nanti cuacanya muncul di sini.</p></div></div>`;
+          return;
+        }
+        const data = await fetchCuaca(adm);
         const today = todayYmd(data);
         const d0 = data.daily.find((d) => d.date === today) || data.daily[0];
         const hours = data.hourly.filter((h) => h.date === d0.date);
-        const r = risk(d0, hours);
+        const r = risk(d0, next24(data));
         const c = data.current;
         const rainy = d0.rainHours.length ? `Potensi hujan sekitar pukul ${d0.rainHours.slice(0, 4).join(', ')} ${zonaLabel(data.lokasi.timezone)}.` : 'Tidak ada potensi hujan signifikan hari ini.';
         box.innerHTML = `
           <div class="ico">${wxIcon(c.weather, isNight(c.time), 64)}</div>
           <div class="txt">
             <h3>Info Hari Ini <span class="badge-chip ${r.chip}">${r.label}</span></h3>
-            <p><b>${auto ? '📍 ' : ''}${data.lokasi.desa}, ${data.lokasi.kotkab}${auto ? ' (lokasimu)' : ''}:</b> ${c.desc}, ${c.t}°C. ${rainy}</p>
+            <p>Cuaca di <b>${data.lokasi.desa}, ${data.lokasi.kotkab}</b> ${c.desc.toLowerCase()} dengan suhu ${c.t}°C. ${rainy}</p>
             <p>${r.tip}</p>
-            <div class="meta">Sumber: BMKG · prakiraan ${c.time} ${zonaLabel(data.lokasi.timezone)}</div>
+            <div class="meta">Sumber data BMKG, prakiraan pukul ${c.time} ${zonaLabel(data.lokasi.timezone)}</div>
           </div>
           <a class="btn btn-outline btn-sm" href="#/cuaca">Lihat Detail ${icon('arrow', 'arrow')}</a>`;
       } catch {

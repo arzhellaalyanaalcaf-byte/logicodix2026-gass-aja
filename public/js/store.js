@@ -12,9 +12,8 @@ const DEFAULT = {
   janji: false,
   lokasi: '31.71.01.1001',
   lokasiNama: 'Gambir, Jakarta Pusat',
+  lokasiDipilih: false,
   notifRead: false,
-  lokasiMode: 'auto', // 'auto' = ikuti GPS, 'manual' = pilihan pengguna
-  geo: null,          // { lat, lon, adm4, nama, jarakKm, at }
 };
 
 let state = load();
