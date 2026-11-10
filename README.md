@@ -38,6 +38,12 @@ Melalui pendekatan *Smart & Fun Education*, Banjir Euy menggabungkan pembelajara
 | Arzhella Alvyana Alcaf | Meteorologi — ITB | [@arzhellaalyanaalcaf-byte](https://github.com/arzhellaalyanaalcaf-byte) |
 | Yuriko Zulaikha Alhaz | Meteorologi — ITB | [@yurikoalhaz-07](https://github.com/yurikoalhaz-07) |
 
+
+> ℹ️ **Catatan Proses Kerja Kelompok & Riwayat Commit GitHub:**  
+> Seluruh proses perancangan, koding, pengujian, dan penyusunan berkas proyek **Banjir Euy** dikerjakan secara kolaboratif bersama oleh seluruh 4 anggota tim. Pengerjaan teknis dilakukan secara tatap muka dengan berbagi **2 perangkat laptop (device)**, sehingga riwayat *commit* dan *push* di repositori GitHub ini sebagian besar terakumulasi dan terekam melalui akun `@arzhellaalyanaalcaf-byte` dan `@anggiancely-droid`. Meskipun demikian, seluruh ide, fitur, materi, dan berkas submission merupakan hasil kontribusi aktif dari keempat anggota tim.
+
+---
+
 ### Pembagian Kontribusi Tim
 
 | Anggota | Kontribusi |
