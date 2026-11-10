@@ -1,125 +1,146 @@
-# Banjir Euy 🌧️
-### Edukasi Interaktif Kesiapsiagaan Banjir untuk Siswa SMA/SMK/Sederajat
+# 🌧️ BANJIR EUY
+### Kenali Risikonya, Siapkan Dirimu, Hadapi dengan Ilmu!
 
-**Banjir Euy** merupakan aplikasi edukasi berbasis web yang dirancang untuk meningkatkan pengetahuan dan kesiapsiagaan siswa SMA/SMK/sederajat dalam menghadapi bencana banjir. Aplikasi ini menggabungkan materi edukasi interaktif, simulasi pengambilan keputusan, kuis, checklist tas siaga, chatbot AI, serta informasi prakiraan cuaca dari BMKG.
+<p align="center">
+  <img src="https://img.shields.io/badge/LOGICODIX-2026-8B5CF6?style=for-the-badge" alt="LOGICODIX 2026"/>
+  <img src="https://img.shields.io/badge/Category-WEB-2563EB?style=for-the-badge" alt="Web"/>
+  <img src="https://img.shields.io/badge/Theme-Smart%20%26%20Fun%20Education-EC4899?style=for-the-badge" alt="Smart and Fun Education"/>
+</p>
 
-> **LOGICODIX 2026 — Hackathon Competition**  
-> Kategori: Web  
-> Subtema: Smart & Fun Education
+<p align="center">
+  <b>Platform edukasi interaktif kesiapsiagaan banjir untuk siswa SMA/SMK/sederajat.</b>
+  <br/>
+  Belajar kebencanaan jadi lebih seru melalui materi interaktif, simulasi, kuis, informasi cuaca BMKG, dan chatbot AI.
+</p>
 
 ---
 
-# 1. Identitas Tim
+## 💜 Mengenal Banjir Euy
 
-**Nama Tim:** Gass Aja
+Banjir Euy adalah platform edukasi berbasis web yang dirancang untuk membantu siswa SMA/SMK/sederajat memahami risiko banjir dan meningkatkan kesiapsiagaan dalam menghadapi bencana.
 
-| Nama Anggota | Program Studi | Akun GitHub |
+Melalui pendekatan *Smart & Fun Education*, Banjir Euy menggabungkan pembelajaran kebencanaan dengan teknologi digital agar informasi yang kompleks dapat dipahami secara lebih mudah, menarik, dan interaktif.
+
+**Banjir Euy mengajak siswa melalui lima tahapan pembelajaran:**
+
+<p align="center">
+  <b>🧠 PAHAMI</b> → <b>🎒 SIAPKAN</b> → <b>🎮 LATIHAN</b> → <b>🏆 UJI DIRI</b> → <b>🌱 BERAKSI</b>
+</p>
+
+## 👥 Tim Pengembang
+
+**Nama Tim: Gass Aja**
+
+| Anggota | Program Studi | GitHub |
 |---|---|---|
-| Anceli Anggi Putri Br Sidabalok | Meteorologi, ITB | [@anggiancely-droid](https://github.com/anggiancely-droid) |
-| Bulan Ayu Azzahra | Meteorologi, ITB | [@bulanazzahrasn-afk](https://github.com/bulanazzahrasn-afk) |
-| Arzhella Alvyana Alcaf | Meteorologi, ITB | [@arzhellaalyanaalcaf-byte](https://github.com/arzhellaalyanaalcaf-byte) |
-| Yuriko Zulaikha Alhaz | Meteorologi, ITB | [@yurikoalhaz-07](https://github.com/yurikoalhaz-07) |
+| Anceli Anggi Putri Br Sidabalok | Meteorologi — ITB | [@anggiancely-droid](https://github.com/anggiancely-droid) |
+| Bulan Ayu Azzahra | Meteorologi — ITB | [@bulanazzahrasn-afk](https://github.com/bulanazzahrasn-afk) |
+| Arzhella Alvyana Alcaf | Meteorologi — ITB | [@arzhellaalyanaalcaf-byte](https://github.com/arzhellaalyanaalcaf-byte) |
+| Yuriko Zulaikha Alhaz | Meteorologi — ITB | [@yurikoalhaz-07](https://github.com/yurikoalhaz-07) |
 
----
+### Pembagian Kontribusi Tim
 
-# 2. Deskripsi Solusi
-
-## 2.1 Latar Belakang Permasalahan
-
-Banjir merupakan salah satu bencana hidrometeorologi yang dapat mengganggu aktivitas masyarakat, termasuk kegiatan pendidikan. Siswa yang tinggal atau bersekolah di wilayah rawan banjir berpotensi menghadapi berbagai risiko, seperti terhambatnya perjalanan menuju sekolah, genangan di lingkungan sekitar, hingga kurangnya pemahaman mengenai tindakan keselamatan sebelum, saat, dan setelah banjir.
-
-Informasi mengenai cuaca dan kesiapsiagaan bencana sebenarnya telah tersedia melalui lembaga resmi seperti Badan Meteorologi, Klimatologi, dan Geofisika (BMKG) serta Badan Nasional Penanggulangan Bencana (BNPB). Namun, informasi tersebut perlu disampaikan melalui media yang lebih interaktif dan mudah dipahami oleh pelajar.
-
-## 2.2 Solusi yang Ditawarkan
-
-Banjir Euy dikembangkan sebagai media pembelajaran digital yang menggabungkan edukasi kebencanaan dengan teknologi interaktif.
-
-Pengguna diajak mengikuti tahapan pembelajaran:
-
-**Pahami → Siapkan → Latihan → Uji Diri → Beraksi**
-
-Melalui tahapan tersebut, siswa dapat mempelajari penyebab dan dampak banjir, memahami langkah kesiapsiagaan, berlatih menghadapi skenario banjir, menguji pemahaman melalui kuis, serta menerapkan tindakan kesiapsiagaan dalam kehidupan sehari-hari.
-
-Banjir Euy juga menyediakan dashboard cuaca berbasis data prakiraan BMKG dan chatbot AI untuk membantu pengguna memahami informasi cuaca serta materi kesiapsiagaan banjir.
-
-## 2.3 Target Pengguna
-
-Target utama aplikasi adalah siswa SMA/SMK/sederajat, khususnya pelajar berusia sekitar 15–18 tahun yang tinggal atau bersekolah di wilayah yang berpotensi mengalami banjir.
-
-## 2.4 Tujuan Pengembangan
-
-1. Meningkatkan pengetahuan siswa mengenai banjir dan faktor penyebabnya.
-2. Memberikan pemahaman mengenai tindakan kesiapsiagaan sebelum, saat, dan setelah banjir.
-3. Melatih kemampuan siswa dalam mengambil keputusan melalui simulasi interaktif.
-4. Membantu siswa memahami informasi prakiraan cuaca BMKG.
-5. Mendorong penerapan perilaku siaga bencana dalam lingkungan sekolah dan kehidupan sehari-hari.
-
----
-
-# 3. Fitur Utama Aplikasi
-
-Berikut merupakan fitur utama yang dikembangkan dalam Banjir Euy.
-
-| Fitur | Deskripsi |
+| Anggota | Kontribusi |
 |---|---|
-| Landing Page | Halaman pengenalan aplikasi dengan ilustrasi dan animasi bertema banjir. |
-| Beranda Siswa | Menampilkan progres belajar, informasi cuaca, kartu fitur, dan pencapaian pengguna. |
-| Edukasi Banjir | Menyediakan tujuh materi mengenai banjir, penyebab, dampak, tindakan sebelum, saat, dan setelah banjir, serta cara membaca informasi cuaca. |
-| Starter Pack | Checklist 14 perlengkapan tas siaga bencana yang dapat disimpan dan diunduh dalam format PDF. |
-| Simulasi Banjir | Lima skenario interaktif mengenai pengambilan keputusan ketika menghadapi kondisi banjir di lingkungan sekolah. |
-| Kuis | Sepuluh soal evaluasi dengan skor dan pembahasan jawaban. |
-| Hasil dan Pencapaian | Menampilkan hasil belajar, statistik, serta enam lencana pencapaian. |
-| Aksi Nyata | Menyediakan ajakan dan rencana tindakan untuk meningkatkan kesiapsiagaan banjir di lingkungan sekolah. |
-| Pencarian Lokasi | Memungkinkan pengguna mencari wilayah berdasarkan nama atau memilih wilayah secara bertingkat dari provinsi hingga kelurahan/desa. |
-| Dashboard Cuaca BMKG | Menampilkan informasi kondisi cuaca dan prakiraan berdasarkan wilayah yang dipilih pengguna. |
-| Chatbot AI Kak Euy | Membantu menjawab pertanyaan seputar banjir, kesiapsiagaan, dan informasi cuaca. |
-| Notifikasi | Menyediakan ringkasan informasi cuaca dan pengingat progres belajar. |
-| Desain Responsif | Mendukung penggunaan pada perangkat desktop maupun mobile serta menyediakan dukungan navigasi keyboard dan pengurangan animasi. |
+| **Anceli** | Pengembangan backend, integrasi API cuaca BMKG, integrasi chatbot AI, konfigurasi server, dan dokumentasi teknis. |
+| **Arzhella** | Pengembangan frontend, desain antarmuka, dashboard, struktur aplikasi, dan koordinasi integrasi repository. |
+| **Bulan** | Penyusunan materi edukasi, konten pembelajaran, pengujian antarmuka, serta produksi video demonstrasi. |
+| **Yuriko** | Riset dan verifikasi materi kebencanaan, penyusunan administrasi orisinalitas, serta pengujian dan quality control. |
+
+*Pembagian kontribusi menggambarkan tanggung jawab utama masing-masing anggota. Pengembangan dan penyempurnaan produk dilakukan secara kolaboratif.*
 
 ---
 
-# 4. Teknologi yang Digunakan
+## 🌊 Latar Belakang Permasalahan
 
-| Komponen | Teknologi | Kegunaan |
-|---|---|---|
-| Frontend | HTML5 | Struktur halaman aplikasi. |
-| Styling | CSS3 | Desain antarmuka, animasi, dan responsivitas. |
-| Frontend Logic | JavaScript ES Modules | Pengelolaan interaksi, navigasi, dan fitur aplikasi. |
-| Backend | Node.js | Menjalankan server lokal dan menangani permintaan API. |
-| API Cuaca | API Prakiraan Cuaca Publik BMKG | Mengambil informasi prakiraan cuaca. |
-| Artificial Intelligence | Google Gemini API | Menjalankan chatbot AI Kak Euy. |
-| Alternatif AI | OpenAI-compatible API | Alternatif penyedia layanan AI jika dikonfigurasi. |
-| Penyimpanan Lokal | localStorage | Menyimpan progres pembelajaran dan preferensi pengguna. |
-| Penyimpanan Sesi | sessionStorage | Menyimpan riwayat percakapan chatbot pada sesi browser. |
-| Visualisasi | SVG, CSS Animation, Canvas | Menghasilkan ilustrasi, ikon, dan animasi antarmuka. |
-| Deployment | Vercel | Menyediakan opsi deployment aplikasi web dan fungsi API. |
+Banjir merupakan salah satu bencana yang dapat mengganggu aktivitas masyarakat, termasuk kegiatan pendidikan. Siswa yang tinggal atau bersekolah di wilayah rawan banjir dapat menghadapi risiko ketika berangkat atau pulang sekolah, terutama ketika terjadi hujan lebat, genangan, maupun luapan sungai.
 
-Aplikasi menggunakan JavaScript ES Modules tanpa framework frontend dan tidak memerlukan proses build khusus. Server lokal menggunakan modul bawaan Node.js sehingga tidak memerlukan dependensi npm tambahan berdasarkan konfigurasi proyek.
+Di sisi lain, informasi mengenai cuaca dan kebencanaan telah tersedia melalui lembaga resmi seperti BMKG dan BNPB. Namun, informasi tersebut perlu dikemas dalam media pembelajaran yang lebih mudah dipahami dan menarik bagi pelajar.
+
+### 💡 Solusi Banjir Euy
+
+Banjir Euy menghadirkan pembelajaran kesiapsiagaan banjir melalui:
+
+- Materi edukasi yang disajikan secara bertahap.
+- Simulasi interaktif untuk melatih pengambilan keputusan.
+- Kuis dan pencapaian untuk mengevaluasi pemahaman.
+- Checklist perlengkapan tas siaga.
+- Dashboard prakiraan cuaca berdasarkan data BMKG.
+- Chatbot AI sebagai pendamping pembelajaran.
+
+### 🎯 Target Pengguna
+
+Siswa SMA/SMK/sederajat, khususnya pelajar berusia sekitar 15–18 tahun yang tinggal atau bersekolah di wilayah yang berpotensi mengalami banjir.
 
 ---
 
-# 5. Arsitektur Sistem dan Alur Data
+## ✨ Fitur Unggulan
 
-## 5.1 Diagram Arsitektur
+| Fitur | Penjelasan |
+|---|---|
+| 🏠 **Landing Page** | Halaman pengenalan dengan ilustrasi, animasi, dan informasi aplikasi. |
+| 📊 **Beranda Siswa** | Dashboard progres belajar, informasi cuaca, kartu fitur, dan pencapaian. |
+| 📚 **Edukasi Banjir** | Tujuh materi interaktif tentang banjir, penyebab, dampak, kesiapsiagaan, dan informasi cuaca. |
+| 🎒 **Starter Pack** | Checklist 14 perlengkapan tas siaga yang dapat disimpan dan diunduh sebagai PDF. |
+| 🎮 **Simulasi Banjir** | Lima skenario interaktif mengenai pengambilan keputusan dalam kondisi banjir di sekolah. |
+| 📝 **Kuis Interaktif** | Sepuluh soal dengan skor dan pembahasan jawaban. |
+| 🏆 **Hasil & Pencapaian** | Statistik pembelajaran, skor, konfeti, dan enam lencana pencapaian. |
+| 🌱 **Aksi Nyata** | Ajakan dan rencana tindakan kesiapsiagaan banjir di lingkungan sekolah. |
+| 📍 **Pilih Lokasi** | Pencarian wilayah serta pemilihan administratif dari provinsi hingga kelurahan/desa. |
+| 🌦️ **Dashboard Cuaca BMKG** | Informasi kondisi dan prakiraan cuaca berdasarkan wilayah pilihan pengguna. |
+| 🤖 **Kak Euy AI Chatbot** | Asisten interaktif untuk pertanyaan seputar banjir dan informasi cuaca. |
+| 🔔 **Notifikasi** | Ringkasan cuaca serta pengingat progres belajar. |
+| 📱 **Responsive Design** | Antarmuka yang menyesuaikan perangkat desktop maupun mobile. |
+
+---
+
+## 🛠️ Teknologi yang Digunakan
+
+| Komponen | Teknologi |
+|---|---|
+| Frontend | HTML5, CSS3, JavaScript ES Modules |
+| Backend | Node.js |
+| Visualisasi | SVG, CSS Animation, Canvas |
+| Weather API | BMKG Public Weather Forecast API |
+| Artificial Intelligence | Google Gemini API |
+| Alternatif AI | OpenAI-compatible API |
+| Local Storage | localStorage dan sessionStorage |
+| Deployment | Vercel |
+| Version Control | Git dan GitHub |
+
+**Keunggulan teknis:**
+- Tidak menggunakan framework frontend.
+- Tidak memerlukan proses build frontend.
+- Backend menggunakan modul bawaan Node.js.
+- API key disimpan di server melalui environment variable.
+- Progres belajar disimpan secara lokal pada perangkat pengguna.
+
+---
+
+## 🏗️ Arsitektur Sistem
+
+Banjir Euy menggunakan arsitektur aplikasi web dengan frontend sebagai antarmuka pengguna dan backend sebagai penghubung ke layanan eksternal.
+
+### Diagram Arsitektur
 
 ```mermaid
 flowchart TD
-    A["Pengguna / Browser"]
+    A["👩‍🎓 Siswa / Browser"]
     B["Frontend Banjir Euy<br/>HTML, CSS, JavaScript"]
-    C["Server / API Backend"]
-    D["API Cuaca BMKG"]
+    C["Backend API"]
+    D["BMKG Weather API"]
     E["Google Gemini API"]
-    F["Basis Pengetahuan Offline"]
+    F["Offline Knowledge Base"]
     G["Data Wilayah"]
     H["localStorage / sessionStorage"]
 
     A --> B
+    B <--> H
     B --> C
     C --> D
     C --> E
     C --> F
     C --> G
-    B <--> H
     D --> C
     E --> C
     F --> C
@@ -128,42 +149,33 @@ flowchart TD
     B --> A
 ```
 
-## 5.2 Penjelasan Alur Sistem
+### Alur Data Aplikasi
 
 1. Pengguna membuka aplikasi melalui browser.
-2. Frontend memuat halaman dan fitur aplikasi dari direktori `public/`.
-3. Pengguna dapat memilih wilayah melalui fitur pencarian atau pemilihan wilayah bertingkat.
-4. Frontend mengirimkan permintaan ke endpoint `/api/cuaca` untuk memperoleh informasi prakiraan cuaca dari BMKG.
-5. Backend memproses dan menyesuaikan data cuaca sebelum dikirimkan kembali ke frontend.
-6. Ketika pengguna menggunakan chatbot Kak Euy, pesan dikirimkan ke endpoint `/api/chat`.
-7. Backend meneruskan permintaan ke layanan AI menggunakan API key yang disimpan sebagai environment variable.
-8. Jika layanan AI tidak tersedia atau API key tidak dikonfigurasi, chatbot dapat menggunakan basis pengetahuan lokal sesuai implementasinya.
-9. Progres belajar disimpan pada penyimpanan lokal browser sehingga tidak memerlukan akun pengguna.
-
-## 5.3 Keamanan Sistem
-
-- API key disimpan pada environment variable dan tidak ditulis langsung pada kode frontend.
-- File `.env` dimasukkan ke `.gitignore` agar tidak ikut diunggah ke repository.
-- Repository menyediakan `.env.example` sebagai contoh konfigurasi tanpa nilai kredensial asli.
-- Backend menerapkan pembatasan permintaan pada layanan chatbot sesuai implementasi aplikasi.
-- Data progres belajar disimpan secara lokal pada browser pengguna.
+2. Frontend menampilkan halaman dan fitur dari direktori `public/`.
+3. Pengguna memilih wilayah melalui fitur pencarian atau pemilihan administratif.
+4. Frontend meminta data prakiraan cuaca melalui endpoint `/api/cuaca`.
+5. Backend memproses permintaan dan mengambil data dari layanan BMKG.
+6. Data yang telah diproses dikirimkan kembali kepada frontend.
+7. Pengguna dapat mengirimkan pertanyaan melalui chatbot Kak Euy.
+8. Backend memproses pesan dan meneruskannya ke layanan AI menggunakan API key dari environment variable.
+9. Jika layanan AI tidak tersedia, sistem dapat menggunakan basis pengetahuan offline.
+10. Progres pembelajaran disimpan pada penyimpanan lokal browser.
 
 ---
 
-# 6. Panduan Instalasi dan Menjalankan Aplikasi
+## 🚀 Instalasi dan Menjalankan Aplikasi
 
-## 6.1 Persyaratan Sistem
+### 1. Persyaratan
 
-Sebelum menjalankan aplikasi, pastikan perangkat telah memiliki:
+Pastikan perangkat telah memiliki:
 
 - Node.js versi 18 atau lebih baru.
-- Browser modern seperti Google Chrome, Microsoft Edge, atau Mozilla Firefox.
-- Koneksi internet untuk mengakses layanan API eksternal.
-- Git untuk mengambil source code dari repository (opsional jika source code sudah tersedia).
+- Browser modern.
+- Koneksi internet untuk layanan eksternal.
+- Git (jika mengambil source code melalui GitHub).
 
-## 6.2 Mengambil Source Code
-
-Clone repository menggunakan perintah berikut:
+### 2. Clone Repository
 
 ```bash
 git clone https://github.com/arzhellaalyanaalcaf-byte/logicodix2026-gass-aja.git
@@ -175,30 +187,28 @@ Masuk ke direktori proyek:
 cd logicodix2026-gass-aja
 ```
 
-## 6.3 Konfigurasi Environment Variable
+### 3. Konfigurasi Environment
 
-Salin file `.env.example` menjadi `.env`.
+Salin `.env.example` menjadi `.env`.
 
-Untuk Windows:
+Windows:
 
 ```powershell
 copy .env.example .env
 ```
 
-Untuk Linux/macOS:
+Linux/macOS:
 
 ```bash
 cp .env.example .env
 ```
 
-Buka file `.env`, kemudian isi konfigurasi layanan AI jika ingin menggunakan chatbot berbasis AI.
-
-Contoh:
+Buka `.env` dan masukkan konfigurasi API yang diperlukan.
 
 ```env
 PORT=3000
 
-GEMINI_API_KEY=MASUKKAN_API_KEY_ANDA
+GEMINI_API_KEY=MASUKKAN_API_KEY
 GEMINI_MODEL=gemini-flash-lite-latest
 
 OPENAI_API_KEY=
@@ -206,133 +216,167 @@ OPENAI_BASE_URL=
 OPENAI_MODEL=
 ```
 
-API key dapat diperoleh melalui Google AI Studio:
+Kunci API Google Gemini dapat diperoleh melalui:
 
 https://aistudio.google.com/apikey
 
-**Penting:** Jangan mengunggah file `.env` ke GitHub. Gunakan `.env.example` untuk membagikan format konfigurasi.
+**Penting:** File `.env` bersifat rahasia dan tidak boleh diunggah ke GitHub.
 
-## 6.4 Menjalankan Aplikasi
+### 4. Menjalankan Aplikasi
 
-Jalankan perintah:
+Jalankan server:
 
 ```bash
 npm start
 ```
 
-Jika server berhasil berjalan, buka browser dan akses:
+Buka aplikasi melalui browser:
 
 ```text
 http://localhost:3000
 ```
 
-Aplikasi perlu dijalankan melalui server agar fungsi backend dan integrasi API dapat digunakan. Jangan membuka `public/index.html` secara langsung melalui klik ganda.
+Jangan membuka `public/index.html` secara langsung karena fitur backend dan integrasi API membutuhkan server.
 
-## 6.5 Mode Offline Chatbot
+### 5. Mode Offline
 
-Apabila API key tidak tersedia atau layanan AI tidak dapat digunakan, chatbot dapat beralih ke mode offline berdasarkan basis pengetahuan lokal yang disediakan aplikasi.
+Apabila API key tidak tersedia atau layanan AI tidak dapat digunakan, chatbot dapat menggunakan basis pengetahuan offline sesuai implementasi aplikasi.
 
-## 6.6 Deployment ke Vercel
+### 6. Deployment
 
-Konfigurasi deployment perlu mengikuti struktur direktori dan konfigurasi Vercel yang digunakan oleh proyek.
+Aplikasi menyediakan opsi deployment melalui Vercel.
 
-Langkah umum:
-
-1. Masuk ke Vercel.
-2. Pilih **Add New Project**.
-3. Impor repository GitHub Banjir Euy.
-4. Periksa konfigurasi framework dan output directory sesuai struktur proyek.
-5. Tambahkan environment variable yang dibutuhkan, seperti `GEMINI_API_KEY`.
-6. Jalankan deployment.
-7. Uji seluruh fitur aplikasi melalui URL deployment.
+Tahapan umum:
+1. Impor repository GitHub ke Vercel.
+2. Periksa konfigurasi build dan output directory.
+3. Atur environment variable yang diperlukan.
+4. Jalankan deployment.
+5. Uji aplikasi melalui URL hasil deployment.
 
 ---
 
-# 7. Akun Demonstrasi
+## 🌦️ Integrasi Informasi Cuaca BMKG
 
-Banjir Euy tidak mewajibkan pengguna membuat akun atau melakukan autentikasi.
+Dashboard cuaca Banjir Euy menggunakan API prakiraan cuaca publik BMKG.
 
-Fitur masuk hanya meminta nama panggilan secara opsional. Informasi tersebut disimpan pada perangkat pengguna melalui browser.
+Informasi cuaca digunakan untuk membantu siswa memahami kondisi meteorologi di wilayah yang dipilih.
 
-Dengan demikian, tidak terdapat username dan password demonstrasi khusus yang diperlukan untuk mengakses fitur utama aplikasi.
+Fitur dashboard mencakup:
+- Informasi kondisi cuaca.
+- Prakiraan cuaca per tiga jam.
+- Prakiraan harian.
+- Informasi suhu dan curah hujan.
+- Indikator kewaspadaan.
+- Pemilihan wilayah administratif.
 
----
+Sumber data:
 
-# 8. Dokumentasi Penggunaan Artificial Intelligence
-
-## 8.1 Integrasi AI pada Produk
-
-| Layanan AI | Penggunaan | Implementasi |
-|---|---|---|
-| Google Gemini API | Menjawab pertanyaan pengguna mengenai banjir, kesiapsiagaan, dan interpretasi informasi cuaca. | Chatbot AI Kak Euy melalui `api/chat.js`. |
-| Basis Pengetahuan Offline | Menyediakan jawaban alternatif ketika layanan AI tidak tersedia atau tidak dikonfigurasi. | `api/_offline.js`. |
-
-Chatbot Kak Euy menerima pesan pengguna dan dapat menggunakan ringkasan informasi cuaca yang sedang dilihat pengguna sebagai konteks percakapan.
-
-## 8.2 Penggunaan AI dalam Proses Pengembangan
-
-ChatGPT (OpenAI) digunakan sebagai alat bantu dalam proses pengembangan proyek, terutama untuk:
-
-- Diskusi ide dan penyusunan struktur aplikasi.
-- Bantuan memahami dan memperbaiki kesalahan kode.
-- Penyusunan dokumentasi teknis.
-- Penyempurnaan penjelasan fitur dan alur penggunaan aplikasi.
-
-Seluruh hasil bantuan AI ditinjau dan disesuaikan oleh anggota tim sebelum digunakan dalam proyek.
-
-**Catatan:** Dokumentasikan juga layanan AI lain yang benar-benar digunakan oleh anggota tim selama pengembangan, apabila ada.
-
-## 8.3 Etika dan Keamanan Penggunaan AI
-
-- Chatbot diarahkan untuk mengutamakan informasi keselamatan dan kesiapsiagaan bencana.
-- Informasi cuaca merujuk pada data yang diperoleh dari sumber BMKG.
-- API key tidak disimpan langsung di frontend.
-- Chatbot memiliki mekanisme pembatasan permintaan sesuai implementasi backend.
-- Pengguna diberikan pemahaman bahwa jawaban AI dapat memiliki keterbatasan dan tidak menggantikan instruksi resmi dari petugas berwenang.
+https://data.bmkg.go.id/prakiraan-cuaca/
 
 ---
 
-# 9. Atribusi Sumber, Data, dan Aset
+## 🤖 Chatbot AI — Kak Euy
 
-## 9.1 Sumber Data dan Informasi
+Kak Euy merupakan chatbot AI yang dirancang sebagai pendamping pembelajaran kesiapsiagaan banjir.
+
+### Kemampuan Chatbot
+
+- Menjawab pertanyaan mengenai banjir.
+- Membantu menjelaskan tindakan kesiapsiagaan.
+- Membantu memahami informasi cuaca.
+- Menggunakan konteks ringkasan cuaca yang sedang dilihat pengguna.
+- Menyediakan alternatif jawaban melalui basis pengetahuan offline.
+
+### Teknologi AI
+
+| Layanan | Penggunaan |
+|---|---|
+| Google Gemini API | Pemrosesan pertanyaan dan jawaban chatbot. |
+| Offline Knowledge Base | Alternatif jawaban saat layanan AI tidak tersedia. |
+
+### Penggunaan AI dalam Pengembangan
+
+ChatGPT (OpenAI) digunakan sebagai alat bantu dalam proses pengembangan untuk diskusi ide, pemahaman kode, debugging, dan penyusunan dokumentasi teknis.
+
+Hasil bantuan AI ditinjau dan disesuaikan oleh anggota tim sebelum digunakan.
+
+### Prinsip Keamanan AI
+
+- API key tidak ditanamkan pada frontend.
+- Kredensial disimpan menggunakan environment variable.
+- Chatbot diarahkan untuk mengutamakan keselamatan pengguna.
+- Informasi cuaca mengacu pada sumber BMKG.
+- Jawaban AI tidak menggantikan arahan resmi dari petugas kebencanaan.
+
+---
+
+## 🔐 Keamanan dan Privasi
+
+Banjir Euy menerapkan beberapa prinsip keamanan dalam pengembangan aplikasi:
+
+- File `.env` tidak disertakan dalam repository.
+- File `.env.example` disediakan tanpa kredensial asli.
+- API key digunakan melalui backend.
+- Progres pembelajaran disimpan secara lokal.
+- Website tidak meminta izin GPS untuk memilih lokasi.
+- Riwayat percakapan chatbot disimpan pada sesi browser sesuai implementasi aplikasi.
+
+---
+
+## 📚 Sumber Data dan Atribusi
+
+Banjir Euy menggunakan referensi dan aset dari berbagai sumber untuk mendukung pengembangan aplikasi.
+
+### 1. Sumber Informasi Kebencanaan
 
 | Sumber | Penggunaan |
 |---|---|
-| Badan Meteorologi, Klimatologi, dan Geofisika (BMKG) | Data prakiraan cuaca dan informasi meteorologi. |
-| Badan Nasional Penanggulangan Bencana (BNPB) | Referensi edukasi kebencanaan dan kesiapsiagaan banjir. |
-| Kemendagri melalui dataset `idn-area-data` | Referensi kode wilayah administratif Indonesia. |
+| [BNPB](https://www.bnpb.go.id/) | Referensi materi edukasi dan kesiapsiagaan banjir. |
+| [BMKG](https://www.bmkg.go.id/) | Referensi informasi meteorologi dan data prakiraan cuaca. |
+| [Data Prakiraan Cuaca BMKG](https://data.bmkg.go.id/prakiraan-cuaca/) | Sumber data prakiraan cuaca aplikasi. |
 
-Tautan sumber:
+### 2. Sumber Data Wilayah
 
-- BMKG: https://data.bmkg.go.id/prakiraan-cuaca/
-- BNPB: https://www.bnpb.go.id/
-- Dataset wilayah: https://github.com/fityannugroho/idn-area-data
+Dataset kode wilayah administratif menggunakan referensi:
 
-## 9.2 Atribusi Foto
+[idn-area-data — GitHub](https://github.com/fityannugroho/idn-area-data)
 
-Foto yang digunakan dalam materi aplikasi merujuk pada sumber berikut sesuai dokumentasi proyek:
+Penggunaan dataset mengikuti ketentuan lisensi Open Database License yang berlaku pada sumbernya.
 
-- Genangan: VOA Indonesian Service — [People walk through Jakarta's flooded streets](https://commons.wikimedia.org/wiki/File:VOA_People_walk_through_Jakarta%27s_flooded_streets.jpg).
-- Luapan sungai: BNPB — [Flood in Tanah Laut Regency](https://commons.wikimedia.org/wiki/File:Flood_in_Tanah_Laut_Regency.jpg).
-- Banjir bandang: BNPB — [Banjir Bandang Luwu 2020](https://commons.wikimedia.org/wiki/File:Banjir_Bandang_Luwu_2020.png).
-- Banjir rob: Tim LindungiHutan — [Rumah Mak Jah di Desa Bedono](https://commons.wikimedia.org/wiki/File:Rumah_Mak_Jah_di_Desa_Bedono_yang_Tenggelam_karena_abrasi.jpg).
+### 3. Atribusi Foto
 
-Lisensi dan ketentuan penggunaan setiap foto perlu mengikuti informasi yang tercantum pada halaman sumber aslinya.
+Foto yang digunakan dalam materi aplikasi merujuk pada sumber berikut:
 
-## 9.3 Atribusi Ilustrasi dan Elemen Visual
+- **Genangan:** VOA Indonesian Service — [People walk through Jakarta's flooded streets](https://commons.wikimedia.org/wiki/File:VOA_People_walk_through_Jakarta%27s_flooded_streets.jpg).
+- **Luapan sungai:** BNPB — [Flood in Tanah Laut Regency](https://commons.wikimedia.org/wiki/File:Flood_in_Tanah_Laut_Regency.jpg).
+- **Banjir bandang:** BNPB — [Banjir Bandang Luwu 2020](https://commons.wikimedia.org/wiki/File:Banjir_Bandang_Luwu_2020.png).
+- **Banjir rob:** Tim LindungiHutan — [Rumah Mak Jah di Desa Bedono](https://commons.wikimedia.org/wiki/File:Rumah_Mak_Jah_di_Desa_Bedono_yang_Tenggelam_karena_abrasi.jpg).
 
-- Ilustrasi vektor berupa sekolah, awan, hujan, gelombang, serta ikon cuaca dibuat menggunakan SVG sesuai aset yang dikembangkan tim.
-- **Ilustrasi karakter siswa dan tas:** cantumkan sumber asli dan lisensi aset yang digunakan sebelum submission. Jika dibuat sendiri oleh tim, nyatakan sebagai karya tim. Jika berasal dari pihak ketiga, cantumkan sumber dan lisensinya.
+Ketentuan lisensi dan penggunaan setiap foto mengikuti informasi pada halaman sumber aslinya.
 
-## 9.4 Atribusi Font
+### 4. Atribusi Ilustrasi AI
 
-Font Plus Jakarta Sans digunakan dalam antarmuka aplikasi. Font ini didistribusikan melalui Google Fonts dengan lisensi SIL Open Font License.
+Ilustrasi karakter siswa dan tas siaga yang digunakan dalam aplikasi Banjir Euy dibuat menggunakan teknologi **Artificial Intelligence (AI) generatif** berdasarkan prompt, konsep, dan arahan visual yang disusun oleh tim pengembang.
 
-Tautan: https://fonts.google.com/specimen/Plus+Jakarta+Sans
+Aset visual tersebut digunakan untuk mendukung identitas visual dan pengalaman pembelajaran pada aplikasi Banjir Euy. Hasil generasi AI ditinjau dan dipilih oleh tim sebelum diintegrasikan ke dalam antarmuka aplikasi.
+
+Ilustrasi tersebut bukan diklaim sebagai foto dokumentasi kejadian nyata. Penggunaannya ditujukan sebagai elemen visual pendukung edukasi.
+
+### 5. Atribusi Ilustrasi Vektor
+
+Ilustrasi vektor berupa sekolah, awan, hujan, gelombang, dan ikon cuaca yang dibuat sebagai SVG dikembangkan sebagai bagian dari elemen visual aplikasi oleh tim.
+
+### 6. Atribusi Font
+
+Font Plus Jakarta Sans digunakan dalam antarmuka aplikasi.
+
+Sumber: https://fonts.google.com/specimen/Plus+Jakarta+Sans
+
+Font didistribusikan dengan lisensi SIL Open Font License.
 
 ---
 
-# 10. Struktur Folder Proyek
+## 📁 Struktur Folder Proyek
 
 ```text
 banjireuy/
@@ -348,29 +392,23 @@ banjireuy/
 │
 ├── public/
 │   ├── index.html
-│   │
 │   ├── css/
 │   │   └── style.css
-│   │
 │   ├── assets/
 │   │   └── img/
-│   │
 │   └── js/
 │       ├── app.js
 │       ├── store.js
 │       ├── weather.js
 │       ├── ui.js
-│       │
 │       ├── data/
 │       │   └── content.js
-│       │
 │       ├── components/
 │       │   ├── icons.js
 │       │   ├── illus.js
 │       │   ├── chatbot.js
 │       │   ├── pdf.js
 │       │   └── confetti.js
-│       │
 │       └── pages/
 │           ├── landing.js
 │           ├── beranda.js
@@ -392,10 +430,16 @@ banjireuy/
 
 ---
 
-# 11. Penutup
+## 🎓 Tujuan Akhir
 
-Banjir Euy dikembangkan sebagai media edukasi digital yang membantu siswa memahami risiko banjir, meningkatkan kesiapsiagaan, serta melatih kemampuan mengambil keputusan melalui pembelajaran interaktif.
+Banjir Euy hadir sebagai upaya pemanfaatan teknologi digital untuk mendukung pendidikan kebencanaan bagi generasi muda.
 
-Dengan menggabungkan edukasi kebencanaan, simulasi, evaluasi pembelajaran, informasi cuaca BMKG, dan dukungan chatbot AI, Banjir Euy diharapkan dapat menjadi salah satu sarana pembelajaran kesiapsiagaan banjir yang mudah diakses dan relevan bagi pelajar.
+Melalui pengalaman belajar yang interaktif, informasi meteorologi, dan teknologi AI, siswa diharapkan dapat lebih memahami risiko banjir serta mengetahui tindakan yang tepat dalam menghadapi kondisi darurat.
 
-**Banjir Euy — Kenali Risikonya, Siapkan Dirimu, Hadapi dengan Ilmu!**
+<p align="center">
+  <b>🌧️ BANJIR EUY</b>
+  <br/>
+  <i>Kenali Risikonya. Siapkan Dirimu. Hadapi dengan Ilmu!</i>
+  <br/><br/>
+  <b>LOGICODIX 2026 — Smart & Fun Education</b>
+</p>
